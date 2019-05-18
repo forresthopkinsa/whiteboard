@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:whiteboard/widget/calendar_day.dart';
 
 class CalendarMonth extends StatefulWidget {
-  final num year;
-  final num month;
+  final int year;
+  final int month;
 
   const CalendarMonth({Key key, this.year, this.month}) : super(key: key);
 
@@ -14,15 +14,12 @@ class CalendarMonth extends StatefulWidget {
 class _CalendarMonthState extends State<CalendarMonth> {
 
   @override
-  Widget build(BuildContext context) => Expanded(
-        child: _buildGrid(7, 6, _getDays(widget.year, widget.month)),
-      );
+  Widget build(BuildContext context) => _buildGrid(7, 6, _getDays(widget.year, widget.month));
 }
 
 Widget _buildGrid(num width, num height, Iterable<Widget> children) {
   return LayoutBuilder(
     builder: (BuildContext ctx, BoxConstraints constraints) {
-      print('${constraints.maxWidth} x ${constraints.maxHeight}');
       final aspectRatio =
           (constraints.maxWidth / width) / (constraints.maxHeight / height);
       print(aspectRatio);
